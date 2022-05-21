@@ -6,14 +6,13 @@ import {Dimensions} from 'react-native';
 
 export const WalkieTalkie = () => {
   return (
-    <View style={styles.contend}>
-      <ScrollView style={styles.main}>
+    <View style={{flex: 1}}>
+      <View style={styles.contend}>
         <Text> WalkieTalkie</Text>
-      </ScrollView>
-      <View style={styles.microphone}>
-        <Microphone />
       </View>
-      <View>
+
+      <View style={styles.footer}>
+        <Microphone />
         <ListUsers />
       </View>
     </View>
@@ -21,15 +20,9 @@ export const WalkieTalkie = () => {
 };
 
 const styles = StyleSheet.create({
-  contend: {backgroundColor: '#1b235f'},
-  main: {height: '65%'},
-  microphone: {
-    position: 'absolute',
-    alignItems: 'center',
-    left: 0,
-    right: 0,
-    top: Dimensions.get('window').height * 0.6,
-    bottom: 0,
-    zIndex: 1,
+  contend: {backgroundColor: '#1b235f', flex: 1},
+  footer: {
+    backgroundColor: '#fff',
+    height: Dimensions.get('window').height * 0.3,
   },
 });

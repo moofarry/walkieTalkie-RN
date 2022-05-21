@@ -1,24 +1,15 @@
 import React from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  Image,
-  View,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, Text, Image, View} from 'react-native';
+import {useFetch} from '../../hooks/useFetch';
+import {UsersResponse} from '../../interfaces/UsersResponse';
 import {useAppSelector} from '../../store';
 
-export const User = () => {
+interface UserComponent {
+  name: string;
+  avatar: string;
+}
+export const User = ({name, avatar}: UserComponent) => {
   const user = useAppSelector(state => state.users.data);
-
-  const img = `https://reactnative.dev/img/tiny_logo.png`;
-
-  const {name, avatar, lastSeen} = {
-    name: 'Jhon',
-    avatar: 'https://avatars.githubusercontent.com/u/31903051?v=4',
-    lastSeen: '04:20 PM',
-  };
   return (
     <View style={styles.avatars}>
       <View style={styles.imgContain}>
@@ -30,8 +21,7 @@ export const User = () => {
         />
       </View>
       <View style={styles.userInfo}>
-        <Text style={styles.userInfo.name}>{name}</Text>
-        <Text style={styles.userInfo.lastSeen}>{lastSeen}</Text>
+        <Text style={styles.userInfo.name}>{name.split(' ')[0]}</Text>
       </View>
     </View>
   );
@@ -46,7 +36,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     marginRight: 5,
-    paddingTop: '10%',
+    paddingTop: '3%',
   },
   imgContain: {
     borderRadius: 100,
@@ -63,7 +53,6 @@ const styles = StyleSheet.create({
   userInfo: {
     flexDirection: 'column',
     flexWrap: 'nowrap',
-    name: {fontSize: 16, color: '#3E4C59', fontWeight: 'bold'},
-    lastSeen: {fontSize: 12, color: '#9AA5B1'},
+    name: {fontSize: 16, color: '#9AA5B1', fontWeight: 'bold'},
   },
 });

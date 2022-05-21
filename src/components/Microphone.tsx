@@ -7,21 +7,30 @@ export const Microphone = () => {
     console.log('xd');
   };
   return (
-    <View style={styles.contend}>
-      <Pressable onPress={useRecord}>
-        <Icon name="microphone-off" size={30} color="#fff" />
-      </Pressable>
-    </View>
+    <Pressable onPress={useRecord}>
+      <View
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: -Dimensions.get('window').height * 0.06,
+          bottom: 0,
+          alignItems: 'center',
+        }}>
+        <View style={styles.contend}>
+          <Icon name="microphone" size={30} color="#fff" />
+        </View>
+      </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   contend: {
-    display: 'flex',
-    backgroundColor: '#ff3a3a',
     borderRadius: 100,
     width: 80,
     height: 80,
+    backgroundColor: '#ff3a3a',
     justifyContent: 'center',
     alignItems: 'center',
   },
